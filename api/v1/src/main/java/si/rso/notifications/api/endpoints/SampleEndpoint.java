@@ -13,8 +13,7 @@ import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
 import com.kumuluz.ee.rest.beans.QueryParameters;
-import si.rso.notifications.lib.Sample;
-import si.rso.notifications.services.SampleService;
+import si.rso.notifications.services.NotificationService;
 
 @Path("/sample")
 @RequestScoped
@@ -22,18 +21,25 @@ import si.rso.notifications.services.SampleService;
 @Consumes(MediaType.APPLICATION_JSON)
 public class SampleEndpoint {
     
-    @Inject
-    private SampleService sampleService;
-    
     @Context
     protected UriInfo uriInfo;
+    
+    @Inject
+    private NotificationService notificationService;
     
     @GET
     public Response getGreetings() {
         QueryParameters query = QueryParameters.query(uriInfo.getRequestUri().getQuery()).build();
-        List<Sample> samples = sampleService.getSamples(query);
-        long samplesCount = sampleService.getSamplesCount(query);
+        List<String> samples = null;
+        long samplesCount = 0;
         return Response.ok(samples).header("X-Total-Count", samplesCount).build();
+    }
+    
+    @GET
+    @Path("/test")
+    public Response test() {
+        notificationService.notifySms();
+        return Response.ok().build();
     }
 
 }

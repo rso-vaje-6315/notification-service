@@ -5,6 +5,7 @@
     <groupId>si.rso.notifications</groupId>
     <artifactId>notification-service</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+
     <packaging>pom</packaging>
 
     <name>notification-service</name>
@@ -25,17 +26,9 @@
         <kumuluzee-openapi.version>1.0.1</kumuluzee-openapi.version>
         <kumuluzee-fault-tolerance.version>2.0.0</kumuluzee-fault-tolerance.version>
         <jackson.version>2.9.9</jackson.version>
-        <postgres.version>42.2.7</postgres.version>
         <keycloak.version>7.0.0</keycloak.version>
         <rso-rest.version>1.0.0</rso-rest.version>
     </properties>
-
-    <modules>
-        <module>api</module>
-        <module>lib</module>
-        <module>services</module>
-        <module>persistence</module>
-    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -46,12 +39,12 @@
             </dependency>
             <dependency>
                 <groupId>si.rso.notifications</groupId>
-                <artifactId>persistence</artifactId>
+                <artifactId>services</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>si.rso.notifications</groupId>
-                <artifactId>services</artifactId>
+                <artifactId>twilio-sms-integration-lib-v1</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -119,11 +112,6 @@
                 <version>${keycloak.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${postgres.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>si.rso.rest</groupId>
                 <artifactId>rest-utils</artifactId>
                 <version>${rso-rest.version}</version>
@@ -155,7 +143,7 @@
                 <module>api</module>
                 <module>lib</module>
                 <module>services</module>
-                <module>persistence</module>
+                <module>integrations</module>
             </modules>
         </profile>
     </profiles>

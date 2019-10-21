@@ -31,13 +31,28 @@ kumuluzee:
       disk-space-health-check:
         threshold: 100000000
         type: liveness
-  datasources:
-    - jndi-name: jdbc/mainDB
-      connection-url: jdbc:postgresql://localhost:5432/notification-service
-      username: not_set
-      password: not_set
-      pool:
-        max-size: 20
   security:
     keycloak:
-      json: '{}'
+      json: '{
+               "realm": "rso",
+               "bearer-only": true,
+               "auth-server-url": "https://keycloak.mjamsek.com/auth",
+               "ssl-required": "external",
+               "resource": "notification-service",
+               "confidential-port": 0
+             }'
+  rest-client:
+    registrations:
+      - class: twilio-api
+        url: https://api.twilio.com/2010-04-01
+notifications:
+  mail:
+    host: smtp.yandex.com
+    port: 465
+    display-name: E-store
+    username: not_set
+    password: not_set
+  sms:
+    api-sid: not_set
+    api-key: not_set
+    number: not_set
