@@ -1,12 +1,14 @@
 package si.rso.notifications.email;
 
-import si.rso.rest.exceptions.RestException;
+import si.rso.rest.exceptions.ServiceCallException;
 
-import javax.ws.rs.core.Response;
-
-public class EmailException extends RestException {
+public class EmailException extends ServiceCallException {
     
     public EmailException(String message) {
-        super(message, Response.Status.SERVICE_UNAVAILABLE);
+        super(message);
+    }
+    
+    public EmailException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

@@ -44,7 +44,7 @@ public class YandexEmailService implements EmailService {
             
         } catch (Exception e) {
             e.printStackTrace();
-            throw new EmailException("Yandex SMTP call failed: " + e.getMessage());
+            throw new EmailException("Yandex SMTP call failed: " + e.getMessage(), e);
         }
     }
     

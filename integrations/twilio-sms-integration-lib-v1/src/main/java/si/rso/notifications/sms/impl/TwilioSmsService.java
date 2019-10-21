@@ -50,7 +50,7 @@ public class TwilioSmsService implements SmsService {
             }
         } catch (WebApplicationException e) {
             e.printStackTrace();
-            throw new SmsException("Twilio REST call failed: " + e.getMessage());
+            throw new SmsException("Twilio REST call failed: " + e.getMessage(), e);
         }
     }
     
