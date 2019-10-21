@@ -11,8 +11,6 @@ public class EmailNotification {
     
     private String htmlContent;
     
-    private String textContent;
-    
     public String getEmail() {
         return email;
     }
@@ -35,13 +33,5 @@ public class EmailNotification {
     
     public void setHtmlContent(String htmlContent) {
         this.htmlContent = htmlContent;
-    }
-    
-    public String getTextContent() {
-        return textContent;
-    }
-    
-    public void setTextContent(String textContent) {
-        this.textContent = textContent;
     }
 }

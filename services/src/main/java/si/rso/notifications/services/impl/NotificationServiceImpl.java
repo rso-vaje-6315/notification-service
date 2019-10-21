@@ -44,8 +44,7 @@ public class NotificationServiceImpl implements NotificationService {
         emailService.sendEmail(
             notification.getEmail(),
             notification.getSubject(),
-            notification.getHtmlContent(),
-            notification.getTextContent()
+            notification.getHtmlContent()
         );
     }
 }

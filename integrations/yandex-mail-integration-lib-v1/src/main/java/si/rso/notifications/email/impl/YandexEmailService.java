@@ -24,7 +24,7 @@ public class YandexEmailService implements EmailService {
     private Validator validator;
     
     @Override
-    public void sendEmail(String to, String subject, String htmlContent, String textContent) throws EmailException {
+    public void sendEmail(String to, String subject, String htmlContent) throws EmailException {
         
         validator.assertNotBlank(to);
         validator.assertNotBlank(subject);
@@ -34,7 +34,7 @@ public class YandexEmailService implements EmailService {
             Properties properties = createProperties();
             
             Session session = Session.getInstance(properties);
-            Message message = createMessage(session, to, subject, htmlContent, textContent);
+            Message message = createMessage(session, to, subject, htmlContent);
     
             Transport transport = session.getTransport("smtp");
             transport.connect(emailConfig.getHost(), emailConfig.getUsername(), emailConfig.getPassword());
@@ -46,10 +46,9 @@ public class YandexEmailService implements EmailService {
             e.printStackTrace();
             throw new EmailException("Yandex SMTP call failed: " + e.getMessage());
         }
-        
     }
     
-    private MimeMessage createMessage(Session session, String to, String subject, String htmlContent, String textContent) throws Exception {
+    private MimeMessage createMessage(Session session, String to, String subject, String htmlContent) throws Exception {
         MimeMessage email = new MimeMessage(session);
         InternetAddress recipient = new InternetAddress(to);
         InternetAddress sender = new InternetAddress(emailConfig.getUsername(), emailConfig.getDisplayName());
@@ -58,12 +57,6 @@ public class YandexEmailService implements EmailService {
         email.addRecipient(Message.RecipientType.TO, recipient);
         
         Multipart content = new MimeMultipart();
-        
-        if (textContent != null && !textContent.isEmpty()) {
-            BodyPart plainTextPart = new MimeBodyPart();
-            plainTextPart.setText(textContent);
-            content.addBodyPart(plainTextPart);
-        }
         
         BodyPart htmlTextPart = new MimeBodyPart();
         htmlTextPart.setContent(htmlContent, "text/html; charset=utf-8");
