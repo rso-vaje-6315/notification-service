@@ -1,28 +1,39 @@
 package si.rso.notifications.sms.impl;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import si.rso.notifications.sms.SmsException;
 import si.rso.notifications.sms.SmsService;
 import si.rso.notifications.sms.api.TwilioApi;
 import si.rso.notifications.sms.config.SmsConfig;
+import si.rso.rest.services.Validator;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Form;
+import javax.ws.rs.core.Response;
 import java.util.Base64;
 
 @ApplicationScoped
 public class TwilioSmsService implements SmsService {
     
+    private static final String PHONE_REGEX = "^\\+?[1-9]\\d{1,14}$";
+    
     @Inject
     private SmsConfig smsConfig;
+    
+    @Inject
+    private Validator validator;
     
     @Inject
     @RestClient
     private TwilioApi twilioApi;
     
     @Override
-    public void sendSms(String phoneNumber, String content, String sender) {
+    public void sendSms(String phoneNumber, String content) throws SmsException {
+        
+        validator.assertRegex(phoneNumber, PHONE_REGEX);
+        validator.assertNotBlank(content);
         
         try {
             
@@ -31,21 +42,16 @@ public class TwilioSmsService implements SmsService {
             form.param("To", phoneNumber);
             form.param("Body", content);
             
-            twilioApi.sendSms(smsConfig.getApiSid(), createAuthHeader(), form);
+            Response response = twilioApi.sendSms(smsConfig.getApiSid(), createAuthHeader(), form);
+            
+            if (response.getStatus() != Response.Status.CREATED.getStatusCode()) {
+                System.err.println("Twilio response status: " + response.getStatus());
+                throw new SmsException("Return status is not 201!");
+            }
         } catch (WebApplicationException e) {
             e.printStackTrace();
+            throw new SmsException("Twilio REST call failed: " + e.getMessage());
         }
-        
-        
-        /*Twilio.init(smsConfig.getApiSid(), smsConfig.getApiKey());
-    
-        Message message = Message.creator(
-            new PhoneNumber(phoneNumber),
-            new PhoneNumber(smsConfig.getNumber()),
-            content
-        ).create();
-    
-        System.err.println(message.getStatus().toString());*/
     }
     
     private String createAuthHeader() {

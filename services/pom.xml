@@ -21,6 +21,10 @@
             <groupId>si.rso.notifications</groupId>
             <artifactId>twilio-sms-integration-lib-v1</artifactId>
         </dependency>
+        <dependency>
+            <groupId>si.rso.notifications</groupId>
+            <artifactId>yandex-mail-integration-lib-v1</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.kumuluz.ee</groupId>

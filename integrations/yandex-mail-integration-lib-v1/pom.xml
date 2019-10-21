@@ -11,4 +11,33 @@
 
     <artifactId>yandex-mail-integration-lib-v1</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>si.rso.notifications</groupId>
+            <artifactId>notification-service-lib-v1</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kumuluz.ee</groupId>
+            <artifactId>kumuluzee-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kumuluz.ee</groupId>
+            <artifactId>kumuluzee-cdi-weld</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kumuluz.ee</groupId>
+            <artifactId>kumuluzee-jax-rs-jersey</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kumuluz.ee</groupId>
+            <artifactId>kumuluzee-javamail-ri</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>si.rso.rest</groupId>
+            <artifactId>rest-utils</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

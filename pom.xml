@@ -47,6 +47,11 @@
                 <artifactId>twilio-sms-integration-lib-v1</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>si.rso.notifications</groupId>
+                <artifactId>yandex-mail-integration-lib-v1</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.kumuluz.ee</groupId>
