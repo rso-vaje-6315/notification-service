@@ -24,6 +24,9 @@ public class EmailConfig {
     @ConfigValue("password")
     private String password;
     
+    @ConfigValue("tmp-dir")
+    private String tmpDir;
+    
     public String getHost() {
         return host;
     }
@@ -62,5 +65,13 @@ public class EmailConfig {
     
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public String getTmpDir() {
+        return tmpDir;
+    }
+    
+    public void setTmpDir(String tmpDir) {
+        this.tmpDir = tmpDir;
     }
 }

@@ -1,6 +1,6 @@
 package si.rso.notifications.api.endpoints;
 
-import si.rso.notifications.lib.AllNotification;
+import si.rso.notifications.lib.ChannelNotification;
 import si.rso.notifications.services.NotificationService;
 
 import javax.enterprise.context.RequestScoped;
@@ -22,8 +22,8 @@ public class SampleEndpoint {
     private NotificationService notificationService;
     
     @POST
-    public Response test(AllNotification notification) {
-        notificationService.notifyAllChannels(notification);
+    public Response test(ChannelNotification notification) {
+        notificationService.notifyChannels(notification);
         return Response.ok().build();
     }
 

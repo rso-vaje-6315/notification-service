@@ -52,6 +52,7 @@ notifications:
     display-name: E-store
     username: not_set
     password: not_set
+    tmp-dir: temp
   sms:
     api-sid: not_set
     api-key: not_set

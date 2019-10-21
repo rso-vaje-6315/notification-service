@@ -3,7 +3,7 @@ package si.rso.notifications.lib;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AllNotification {
+public class ChannelNotification {
     
     private SmsNotification sms;
     

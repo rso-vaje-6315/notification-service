@@ -11,6 +11,8 @@ public class EmailNotification {
     
     private String htmlContent;
     
+    private EmailAttachment attachment;
+    
     public String getEmail() {
         return email;
     }
@@ -33,5 +35,35 @@ public class EmailNotification {
     
     public void setHtmlContent(String htmlContent) {
         this.htmlContent = htmlContent;
+    }
+    
+    public EmailAttachment getAttachment() {
+        return attachment;
+    }
+    
+    public void setAttachment(EmailAttachment attachment) {
+        this.attachment = attachment;
+    }
+    
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class EmailAttachment {
+        private String url;
+        private String name;
+    
+        public String getUrl() {
+            return url;
+        }
+    
+        public void setUrl(String url) {
+            this.url = url;
+        }
+    
+        public String getName() {
+            return name;
+        }
+    
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }

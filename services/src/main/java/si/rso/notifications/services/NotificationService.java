@@ -1,14 +1,9 @@
 package si.rso.notifications.services;
 
-import si.rso.notifications.lib.AllNotification;
-import si.rso.notifications.lib.EmailNotification;
-import si.rso.notifications.lib.SmsNotification;
+import si.rso.notifications.lib.ChannelNotification;
 
 public interface NotificationService {
     
-    void notifyAllChannels(AllNotification notification);
+    void notifyChannels(ChannelNotification notification);
     
-    void notifySms(SmsNotification notification);
-    
-    void notifyMail(EmailNotification notification);
 }
