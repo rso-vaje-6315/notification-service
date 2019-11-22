@@ -74,6 +74,14 @@
             <groupId>si.rso.rest</groupId>
             <artifactId>rest-utils</artifactId>
         </dependency>
+        <dependency>
+            <groupId>si.rso.event.streaming</groupId>
+            <artifactId>event-streaming-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kumuluz.ee.streaming</groupId>
+            <artifactId>kumuluzee-streaming-kafka</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

@@ -4,7 +4,7 @@
 
 ## Usage
 
-Service takes following data:
+Service consumes following data from Kafka:
 
 ```json
 {
