@@ -16,6 +16,11 @@ kumuluzee:
     enabled: true
     ui:
       enabled: true
+  config:
+    consul:
+      agent: http://localhost:8500
+      start-retry-delay-ms: 500
+      max-retry-delay-ms: 900000
   logs:
     loggers:
       - name: ''
@@ -64,3 +69,6 @@ notifications:
     api-sid: not_set
     api-key: not_set
     number: not_set
+service-config:
+  maintenance: false
+
