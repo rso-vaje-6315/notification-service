@@ -9,14 +9,14 @@ import javax.enterprise.context.ApplicationScoped;
 @ConfigBundle("service-config")
 public class ServiceConfig {
     
-    @ConfigValue(value = "maintenance", watch = true)
-    private boolean maintenance;
+    @ConfigValue(value = "notifications-enabled", watch = true)
+    private boolean notificationsEnabled;
     
-    public boolean isMaintenance() {
-        return maintenance;
+    public boolean isNotificationsEnabled() {
+        return notificationsEnabled;
     }
     
-    public void setMaintenance(boolean maintenance) {
-        this.maintenance = maintenance;
+    public void setNotificationsEnabled(boolean notificationsEnabled) {
+        this.notificationsEnabled = notificationsEnabled;
     }
 }

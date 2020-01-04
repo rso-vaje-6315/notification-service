@@ -35,10 +35,6 @@
             <artifactId>kumuluzee-jax-rs-jersey</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.kumuluz.ee.rest</groupId>
-            <artifactId>kumuluzee-rest-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.kumuluz.ee.rest-client</groupId>
             <artifactId>kumuluzee-rest-client</artifactId>
         </dependency>
@@ -54,15 +50,24 @@
             <groupId>com.kumuluz.ee.config</groupId>
             <artifactId>kumuluzee-config-consul</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kumuluz.ee.config</groupId>
+            <artifactId>kumuluzee-config-mp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kumuluz.ee.metrics</groupId>
+            <artifactId>kumuluzee-metrics-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kumuluz.ee.fault.tolerance</groupId>
+            <artifactId>kumuluzee-fault-tolerance-smallrye</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-jetty94-adapter</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>si.rso.rest</groupId>
             <artifactId>rest-utils</artifactId>
